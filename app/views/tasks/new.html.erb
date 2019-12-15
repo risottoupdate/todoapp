@@ -1,0 +1,7 @@
+<%= form_for @task, url: tasks_path, html: { method: :post} do |f| %>
+  <p>投稿</p>
+  <p>タスク：<%= f.text_field :task %></p>
+  <p>状態：<%= f.text_field :state %></p>
+  <p>期限：<%= f.date_field :limit_date %></p>
+  <input type="submit" value="送信">
+<% end %>
