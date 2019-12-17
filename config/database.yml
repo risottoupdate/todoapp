@@ -49,6 +49,10 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
+  database: blog_development
   pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
