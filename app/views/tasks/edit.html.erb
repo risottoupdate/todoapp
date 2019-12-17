@@ -1,7 +1,28 @@
-<%= form_for @task, url: task_path(@task.id), html:{method: :patch} do |f| %>
-  <p>投稿</p>
-  <p>タスク：<%= f.text_field :task %></p>
-  <p>状態：<%= f.text_field :state %></p>
-  <p>期限：<%= f.date_field :limit_date %></p>
-  <input type="submit" value="送信">
-<% end %>
+<div class="main-wrapper">
+
+  <% @task.errors.full_messages.each do |message| %>
+    <div class="form-error">
+      <%= message %>
+    </div>
+  <% end %>
+
+  <%= form_for @task, url: task_path(@task.id), html:{method: :patch} do |f| %>
+    <h1>タスク編集</h1>
+    <table class="input-table">
+      <tr>
+        <th>フラグ</th>
+        <td><%= f.select :state, [["", ""], ["大至急", "大至急"], ["重要", "重要"]] %></td>
+      </tr>
+      <tr>
+        <th>期限<span class="must">*必須</span></th>
+        <td><%= f.date_field :limit_date %></td>
+      </tr>
+      <tr>
+        <th>タスク<span class="must">*必須</span></th>
+        <td><%= f.text_field :task %></td>
+      </tr>
+    </table>
+    <input type="submit" value="編集" class="new-task input-button">
+  <% end %>
+  <%= link_to "トップへ戻る", tasks_path %>
+</div>

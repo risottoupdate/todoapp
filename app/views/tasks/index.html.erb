@@ -1,11 +1,33 @@
-<%= link_to "投稿画面へ", new_task_path %>
-<% @tasks.each do |task| %>
-  <p>
-    <%= task.task %>
-    <%= task.state %>
-    <%= task.limit_date %>
-    <%= link_to "詳細", task_path(task.id) %>
-    <%= link_to "編集", edit_task_path(task.id), method: :get %>
-    <%= link_to "削除", task_path(task.id), method: :delete, data: {confirm: "削除しますか？"} %>
-  </p>
-<% end %>
+<div class="main-wrapper">
+  <%= link_to "タスク追加", new_task_path, class: "new-task" %>
+
+  <table class="main-table">
+    <thead>
+      <tr>
+        <th scope="col">フラグ</th>
+        <th scope="col">期日</th>
+        <th scope="col">タスク</th>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+      <tr>
+        <td><% if task.state == "大至急" %>
+           <p class="urgent"><%= task.state %></p>
+          <% elsif task.state == "重要" %>
+          <p class="important"><%= task.state %></p>
+          <% else %>
+          <%= task.state %>
+          <% end %>
+        </td>
+        <td><%= task.limit_date %></td>
+        <td><%= task.task %></td>
+        <td><%= link_to "編集", edit_task_path(task.id), method: :get %></td>
+        <td><%= link_to "削除", task_path(task.id), method: :delete, data: {confirm: "削除しますか？"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

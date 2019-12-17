@@ -7,9 +7,43 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.png">
+
   </head>
 
   <body>
+    <div class="top-wrapper">
+        <div class="top-message flex space">
+            <div class="top-left">
+                <% if user_signed_in? %>
+                  <p class="smile">こんにちは、<%= current_user.name %>さん！</p>
+                <% else %><p class="smile">こんにちは、ゲストさん！</p>
+                <% end %>
+            </div>
+            <ul class="top-right">
+              <% if user_signed_in? %>
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "top-menu top-logout" %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to "ログイン", new_user_session_path, class: 'post top-menu login' %>
+              </li>
+              <li>
+                <%= link_to "新規登録", new_user_registration_path, class: 'post top-menu new-post' %>
+              </li>
+              <% end %>
+            </ul>
+        </div>
+    </div>
+
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
