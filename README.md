@@ -1,24 +1,40 @@
-# README
+タスク管理アプリ
+ 
+タスクを登録して、タスク管理をするアプリです
+ 
+## アプリ概要
+ 
+ユーザーログイン機能を「devise」で実装。ログインしたユーザが登録したタスクのみを表示します。
+タスクの追加、編集、削除の機能を実装しております。
+CSSでアプリデザインを整えております。
+ 
+***デモ***
+ 
+herokuにアプリをデプロイしております。 
+https://todo-app-nagaoka.herokuapp.com
+ 
+## 苦戦した箇所
+ 
+- 苦戦ポイント1：herokuへのデプロイ
+　　heroku推奨がpostgresと知らずデータベースをmysqlで作成したので、herokuの環境をmysqlに変更する際にエラーが発生し何度も修正した。
+  　mysql2を使用して作成した為、heroku環境のDATABASE_URLをmysqlからmysql2に修正するという点に気づくまで時間を要した。
+- 苦戦ポイント2：デザイン
+　　必要最低限の機能を実装したシンプルなアプリなので、見やすく分かりやすいデザインを意識して作ろうと思い、何度もデザインを修正した。
+ 
+## 頑張った箇所
+ 
+- 頑張りポイント1：アプリ機能の制作は3時間程で完成した
+　　Railsを使用したCRUD処理としては基本的な機能が中心になるので、必要な要件を満たすアプリは早期で完成する事ができた
+  - 頑張りポイント2：見やすいデザインを意識した
+　　上記の苦戦ポイント2と同様、見やすいデザインを意識してアプリを作成した
+ 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 作者
+ 
+[長岡　勇輝:Twitter](https://twitter.com/freepc_yuki)  
+mail to: freepc.yuki@gmail.com
+ 
+## ライセンス
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is licensed free.  
+ご自由にご利用ください
